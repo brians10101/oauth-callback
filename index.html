@@ -3,6 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>OAuth Callback</title>
+    <script>
+        window.onload = function() {
+            // Check if window opened by another window (OAuth window)
+            if (window.opener) {
+                window.opener.postMessage(window.location.href, "*");
+                window.close();
+            } else {
+                document.body.innerHTML = "OAuth login completed. You can close this window.";
+            }
+        };
+    </script>
 </head>
 <body>
     OAuth login completed. You can close this window.
